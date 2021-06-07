@@ -11,6 +11,10 @@ public class TCPConnection {
     private final BufferedReader in;
     private final BufferedWriter out;
 
+    public TCPConnection(TCPConnectionListener eventListener, String ipAddr, int port) throws IOException {
+        this(eventListener, new Socket(ipAddr, port));
+    }
+
     public TCPConnection(TCPConnectionListener eventListener, Socket socket) throws IOException {
         this.eventListener = eventListener;
         this.socket = socket;
@@ -49,5 +53,9 @@ public class TCPConnection {
         } catch (IOException e) {
             eventListener.onException(TCPConnection.this, e);
         }
+    }
+    @Override
+    public String toString() {
+        return "TCPConnection: " + socket.getInetAddress() + ": " + socket.getPort();
     }
 }
