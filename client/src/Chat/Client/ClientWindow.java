@@ -28,6 +28,7 @@ public class ClientWindow extends JFrame implements ActionListener, TCPConnectio
     private final JTextField fieldInput = new JTextField();
 
     private TCPConnection connection;
+
     private ClientWindow() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
@@ -43,9 +44,11 @@ public class ClientWindow extends JFrame implements ActionListener, TCPConnectio
         add(fieldNickname, BorderLayout.NORTH);
 
         setVisible(true);
-
-            connection = new TCPConnection();  // от сюда
-
+        try {
+            connection = new TCPConnection(this, IP_ADDR, PORT);
+        } catch (IOException e) {
+            printMsg("Connection exception: " + e);
+        }
     }
 
     @Override

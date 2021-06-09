@@ -11,7 +11,7 @@ public class TCPConnection {
     private final BufferedReader in;
     private final BufferedWriter out;
 
-    public TCPConnection(TCPConnectionListener eventListener, String ipAddr, int port) throws IOException {
+    public TCPConnection() throws IOException {
         this(eventListener, new Socket(ipAddr, port));
     }
 
