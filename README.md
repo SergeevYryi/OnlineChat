@@ -1,2 +1,2 @@
 # OnlineChat
-This will be a online chat. Perhaps.
+This a online chat, with names, communication and adding new users
